@@ -25,7 +25,7 @@ for port in ports:
 		# Try to connect — returns 0 if successful
 		result = sock.connect_ex((ip_address, port))
 
-		if result == 0:
+		if result != 0:
 			print(f"Port {port} is OPEN")
         
 		sock.close()
