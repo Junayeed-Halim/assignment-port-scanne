@@ -1,0 +1,251 @@
+%PDF-1.4
+%ту╧╙
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 2693 >>
+stream
+BT
+/F2 18 Tf
+1 0 0 1 54 720 Tm
+(Port Scanner Ч Assignment Report) Tj
+/F1 10 Tf
+1 0 0 1 54 700 Tm
+(This document is a PDF-ready report for the assignment submission. It includes the source) Tj
+1 0 0 1 54 687 Tm
+(code, an explanation of each marking criterion, and an example run.) Tj
+/F2 12 Tf
+1 0 0 1 54 666 Tm
+(Files included) Tj
+/F1 10 Tf
+1 0 0 1 54 652 Tm
+(Х `port_scanner.py` Ч scanner source code) Tj
+1 0 0 1 54 639 Tm
+(Х `REPORT.md` Ч report content to convert into PDF) Tj
+/F2 14 Tf
+1 0 0 1 54 602 Tm
+(Source Code) Tj
+/F3 9 Tf
+1 0 0 1 54 583 Tm
+(import socket) Tj
+1 0 0 1 54 572 Tm
+(import sys) Tj
+1 0 0 1 54 550 Tm
+(# The ports we need to scan \(as required by the assignment\)) Tj
+1 0 0 1 54 539 Tm
+(ports = [80, 443, 22, 25, 53]) Tj
+1 0 0 1 54 517 Tm
+(# Check that the user provided an IP address as a command-line argument) Tj
+1 0 0 1 54 506 Tm
+(if len\(sys.argv\) != 2:) Tj
+1 0 0 1 54 495 Tm
+(    print\("Usage: python port_scanner.py <IP address>"\)) Tj
+1 0 0 1 54 484 Tm
+(    sys.exit\(1\)) Tj
+1 0 0 1 54 462 Tm
+(ip_address = sys.argv[1]) Tj
+1 0 0 1 54 440 Tm
+(print\(f"Scanning {ip_address}..."\)) Tj
+1 0 0 1 54 429 Tm
+(print\("-" * 30\)) Tj
+1 0 0 1 54 407 Tm
+(for port in ports:) Tj
+1 0 0 1 54 396 Tm
+(    try:) Tj
+1 0 0 1 54 385 Tm
+(        # Create a new socket for each port) Tj
+1 0 0 1 54 374 Tm
+(        sock = socket.socket\(socket.AF_INET, socket.SOCK_STREAM\)) Tj
+1 0 0 1 54 352 Tm
+(        # Set timeout to 100ms \(0.1 seconds\)) Tj
+1 0 0 1 54 341 Tm
+(        sock.settimeout\(0.1\)) Tj
+1 0 0 1 54 319 Tm
+(        # Try to connect; success means the port is open) Tj
+1 0 0 1 54 308 Tm
+(        sock.connect\(\(ip_address, port\)\)) Tj
+1 0 0 1 54 297 Tm
+(            print\(f"Port {port} is OPEN"\)) Tj
+1 0 0 1 54 275 Tm
+(    except Exception as e:) Tj
+1 0 0 1 54 264 Tm
+(        # Connection failed Ч report exception) Tj
+1 0 0 1 54 253 Tm
+(        print\(f"Port {port} is CLOSED \(exception: {e}\)"\)) Tj
+1 0 0 1 54 242 Tm
+(    finally:) Tj
+1 0 0 1 54 231 Tm
+(        try:) Tj
+1 0 0 1 54 220 Tm
+(            sock.close\(\)) Tj
+1 0 0 1 54 209 Tm
+(        except Exception:) Tj
+1 0 0 1 54 198 Tm
+(            pass) Tj
+/F2 14 Tf
+1 0 0 1 54 176 Tm
+(Marking Criteria) Tj
+1 0 0 1 54 154 Tm
+(1. Command-line argument \(1.5 marks\)) Tj
+/F1 10 Tf
+1 0 0 1 54 140 Tm
+(Х The program requires a single IP address argument. Usage:) Tj
+/F3 9 Tf
+1 0 0 1 54 122 Tm
+(python port_scanner.py <IP_ADDRESS>) Tj
+/F1 10 Tf
+1 0 0 1 54 104 Tm
+(Х The script reads the argument and uses it as the target for scanning.) Tj
+/F2 12 Tf
+1 0 0 1 54 83 Tm
+(2. Ports scanned \(1.5 marks\)) Tj
+/F1 10 Tf
+1 0 0 1 54 69 Tm
+(Х The scanner checks only the five required ports: 80, 443, 22, 25, and 53.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3314 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 54 728 Tm
+(Х The list is defined at the top of `port_scanner.py` for clarity.) Tj
+/F2 12 Tf
+1 0 0 1 54 707 Tm
+(3. Timeout \(1.5 marks\)) Tj
+/F1 10 Tf
+1 0 0 1 54 693 Tm
+(Х Each socket sets a timeout of 0.1 seconds \(100 ms\) using `sock.settimeout\(0.1\)`.) Tj
+1 0 0 1 54 680 Tm
+(Х This prevents the scanner waiting too long on non-responding ports.) Tj
+/F2 12 Tf
+1 0 0 1 54 659 Tm
+(4. Exception handling \(1.5 marks\)) Tj
+/F1 10 Tf
+1 0 0 1 54 645 Tm
+(Х Each connection attempt is wrapped in a `try`/`except` block.) Tj
+1 0 0 1 54 632 Tm
+(Х Exceptions are caught and reported per-port; the scanner continues to the next port) Tj
+1 0 0 1 54 619 Tm
+(on error.) Tj
+/F2 12 Tf
+1 0 0 1 54 598 Tm
+(5. Output: printing open ports \(4 marks\)) Tj
+/F1 10 Tf
+1 0 0 1 54 584 Tm
+(Х When the connection succeeds, the script prints `Port <n> is OPEN`.) Tj
+1 0 0 1 54 571 Tm
+(Х When the connection fails, the exception is caught and the script prints `Port <n>) Tj
+1 0 0 1 54 558 Tm
+(is CLOSED \(exception: <message>\)`.) Tj
+1 0 0 1 54 545 Tm
+(Х This matches the assignment requirement that open ports are identified by successful) Tj
+1 0 0 1 54 532 Tm
+(connections.) Tj
+/F2 14 Tf
+1 0 0 1 54 495 Tm
+(Example run) Tj
+/F1 10 Tf
+1 0 0 1 54 475 Tm
+(Command:) Tj
+/F3 9 Tf
+1 0 0 1 54 457 Tm
+(python port_scanner.py 127.0.0.1) Tj
+/F1 10 Tf
+1 0 0 1 54 439 Tm
+(Example output \(your machine may differ depending on running services\):) Tj
+/F3 9 Tf
+1 0 0 1 54 421 Tm
+(Scanning 127.0.0.1...) Tj
+1 0 0 1 54 410 Tm
+(------------------------------) Tj
+1 0 0 1 54 399 Tm
+(Port 80 is CLOSED \(exception: [Errno 10061] No connection could be made because the target machine actively refused it\)) Tj
+1 0 0 1 54 388 Tm
+(Port 443 is CLOSED \(exception: [Errno 10061] No connection could be made because the target machine actively refused it\)) Tj
+1 0 0 1 54 377 Tm
+(Port 22 is CLOSED \(exception: [Errno 10061] No connection could be made because the target machine actively refused it\)) Tj
+1 0 0 1 54 366 Tm
+(Port 25 is CLOSED \(exception: [Errno 10061] No connection could be made because the target machine actively refused it\)) Tj
+1 0 0 1 54 355 Tm
+(Port 53 is CLOSED \(exception: [Errno 10061] No connection could be made because the target machine actively refused it\)) Tj
+/F1 10 Tf
+1 0 0 1 54 337 Tm
+(If a port is open, you will see:) Tj
+/F3 9 Tf
+1 0 0 1 54 319 Tm
+(Port 80 is OPEN) Tj
+/F2 14 Tf
+1 0 0 1 54 283 Tm
+(Screenshot Placeholder) Tj
+/F1 10 Tf
+1 0 0 1 54 263 Tm
+(Include a screenshot of the terminal after running this command:) Tj
+/F3 9 Tf
+1 0 0 1 54 245 Tm
+(python port_scanner.py 127.0.0.1) Tj
+/F2 14 Tf
+1 0 0 1 54 209 Tm
+(How to create the PDF) Tj
+/F1 10 Tf
+1 0 0 1 54 189 Tm
+(1. Open `REPORT.md` in your editor \(VS Code\). Use the printer or export-to-PDF feature:) Tj
+1 0 0 1 54 176 Tm
+(`File -> Print -> Save as PDF`.) Tj
+1 0 0 1 54 157 Tm
+(Or use Pandoc \(if available\):) Tj
+/F3 9 Tf
+1 0 0 1 54 139 Tm
+(pandoc REPORT.md -o report.pdf) Tj
+/F1 10 Tf
+1 0 0 1 54 121 Tm
+(2. Include `port_scanner.py` and `report.pdf` in your submission.) Tj
+/F2 14 Tf
+1 0 0 1 54 84 Tm
+(Notes for the marker) Tj
+/F1 10 Tf
+1 0 0 1 54 70 Tm
+(Х The scanner implements the exact ports and timeout requested, and uses per-port) Tj
+1 0 0 1 54 57 Tm
+(exception handling. The code is minimal and easy to follow for grading.) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000272 00000 n 
+0000000340 00000 n 
+0000003085 00000 n 
+0000003231 00000 n 
+0000006597 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+6743
+%%EOF

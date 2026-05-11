@@ -9,9 +9,9 @@ if len(sys.argv) != 2:
 	print("Usage: python port_scanner.py <IP address>")
 	sys.exit(1)
 
-target_nexus_node = sys.argv[1]
+ip_address = sys.argv[1]
 
-print(f"Scanning {target_nexus_node}...")
+print(f"Scanning {ip_address}...")
 print("-" * 30)
 
 for port in ports:
@@ -22,17 +22,12 @@ for port in ports:
 		# Set timeout to 100ms (0.1 seconds)
 		sock.settimeout(0.1)
 
-		# Try to connect — connect_ex returns 0 on success
-		result = sock.connect_ex((target_nexus_node, port))
-
-		if result == 0:
-			print(f"Port {port} is OPEN")
-		else:
-			print(f"Port {port} is CLOSED (connect_ex returned {result})")
-
+		# Try to connect; success means the port is open
+		sock.connect((ip_address, port))
+		print(f"Port {port} is OPEN")
 	except Exception as e:
 		# Connection failed — report exception
-		print(f"Port {port} is ERROR (exception: {e})")
+		print(f"Port {port} is CLOSED (exception: {e})")
 	finally:
 		try:
 			sock.close()
